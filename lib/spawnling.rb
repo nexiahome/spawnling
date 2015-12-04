@@ -124,14 +124,7 @@ class Spawnling
   end
 
   def self.allow_concurrency?
-    return true if RAILS_2_2
-    if defined?(ActiveRecord) && ActiveRecord::Base.respond_to?(:allow_concurrency)
-      ActiveRecord::Base.allow_concurrency
-    elsif defined?(Rails) && Rails.application
-      Rails.application.config.allow_concurrency
-    else
-      true # assume user knows what they are doing
-    end
+    true # Just trust us. :-)
   end
 
   def self.wait(sids = [])
